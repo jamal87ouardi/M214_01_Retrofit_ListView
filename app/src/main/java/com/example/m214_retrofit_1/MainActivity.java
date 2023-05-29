@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     ListView listView;
 
+    Button add;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +34,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         listView = findViewById(R.id.listView);
+        add = findViewById(R.id.button);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getApplicationContext(),AddActivity.class);
+                startActivity(i);
+
+            }
+        });
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://run.mocky.io/")
+                .baseUrl("http://13.48.3.250/")
+
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

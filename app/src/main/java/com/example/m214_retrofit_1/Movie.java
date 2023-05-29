@@ -5,6 +5,12 @@ public class Movie {
     private String name;
     private String image;
 
+    public Movie(int id, String name, String image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }
